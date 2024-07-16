@@ -17,6 +17,11 @@ const isUrlValid = (url) => {
 const app = express();
 
 app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -58,4 +63,3 @@ app.get("/:shortUrl", (req, res) => {
 });
 
 app.listen(10_000, () => console.log(`Server is up and running at port 10000`));
-
